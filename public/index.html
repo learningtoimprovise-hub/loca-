@@ -16,12 +16,15 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">LOCA</a>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="#services">Services</a>
     <a href="#process">Process</a>
     <a href="#about">About</a>
     <a href="#contact" class="nav-cta">Work With Us</a>
   </div>
+  <button class="nav-burger" id="nav-burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -327,8 +330,24 @@
 </footer>
 
 <script>
+// ── MOBILE NAV ───────────────────────────────────────────────
+const burger   = document.getElementById('nav-burger');
+const navLinks = document.getElementById('nav-links');
+if (burger) {
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('nav-open');
+    burger.classList.toggle('burger-open');
+  });
+  // close menu when a link is clicked
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('nav-open');
+      burger.classList.remove('burger-open');
+    });
+  });
+}
 // ── FORM ─────────────────────────────────────────────────────
-const API_BASE    = 'https://loca-et7k.onrender.com';
+const API_BASE    = window.location.origin;
 const inquiryForm = document.getElementById('inquiry-form');
 const submitBtn   = document.getElementById('submit-btn');
 const submitLabel = document.getElementById('submit-label');
@@ -380,4 +399,6 @@ const obs = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
+</html>
+
 </html>
