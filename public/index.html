@@ -618,133 +618,6 @@ nav.scrolled {
 .wyit { font-family:var(--font-d); font-size:20px; font-weight:300; margin-bottom:7px; }
 .wyid { font-size:13px; line-height:1.9; color:rgba(245,237,224,0.44); font-weight:300; }
 
-/* ── TESTIMONIAL ─────────────────────────── */
-.tsti {
-  padding:140px 56px;
-  border-top:1px solid rgba(245,237,224,0.06);
-  position:relative; overflow:hidden;
-}
-.tsti::before {
-  content:''; position:absolute; inset:0;
-  background:radial-gradient(ellipse 60% 80% at 50% 50%, rgba(200,164,106,0.045) 0%, transparent 68%);
-  pointer-events:none;
-}
-
-/* Story layout */
-.tsti-wrap { display:grid; grid-template-columns:1fr 520px; gap:96px; align-items:center; max-width:1200px; }
-.tsti-left { position:relative; }
-.tsti-portrait {
-  width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center top;
-  filter:grayscale(18%); display:block;
-  transition:filter .6s ease;
-}
-.tsti-left:hover .tsti-portrait { filter:grayscale(0%); }
-.tsti-portrait-frame {
-  position:absolute; bottom:-20px; right:-20px;
-  width:60%; height:60%; border:1px solid var(--gold-line); z-index:-1;
-}
-.tsti-portrait-frame::before {
-  content:''; position:absolute; top:10px; left:10px; right:10px; bottom:10px;
-  border:1px solid rgba(200,164,106,0.1);
-}
-.tsti-badge {
-  position:absolute; top:28px; left:-24px;
-  background:var(--ink-warm); border:1px solid var(--gold-line);
-  padding:14px 18px; backdrop-filter:blur(12px);
-}
-.tsti-badge-line1 { font-family:var(--font-u); font-size:8px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:5px; }
-.tsti-badge-line2 { font-family:var(--font-d); font-size:18px; font-weight:300; color:var(--cream); }
-
-/* Right: story */
-.tsti-lbl {
-  font-family:var(--font-u); font-size:9px; font-weight:500;
-  letter-spacing:0.36em; text-transform:uppercase; color:var(--gold);
-  margin-bottom:32px; display:flex; align-items:center; gap:14px;
-}
-.tsti-lbl::before { content:''; width:18px; height:1px; background:var(--gold); flex-shrink:0; }
-.tsti-headline {
-  font-family:var(--font-d); font-size:clamp(28px,3vw,42px);
-  font-weight:300; line-height:1.1; margin-bottom:40px;
-}
-.tsti-headline em { font-style:italic; color:var(--gold); }
-
-/* Story paragraphs */
-.tsti-story { display:flex; flex-direction:column; gap:0; }
-.tsti-chapter {
-  padding:28px 0;
-  border-top:1px solid rgba(245,237,224,0.07);
-  display:grid; grid-template-columns:56px 1fr; gap:24px; align-items:start;
-}
-.tsti-ch-num {
-  font-family:var(--font-d); font-size:13px; font-style:italic;
-  color:var(--gold); opacity:0.7; padding-top:2px;
-}
-.tsti-ch-body {}
-.tsti-ch-title {
-  font-family:var(--font-d); font-size:17px; font-weight:300;
-  color:var(--cream); margin-bottom:8px;
-}
-.tsti-ch-text {
-  font-size:13.5px; line-height:1.95; color:rgba(245,237,224,0.52); font-weight:300;
-}
-.tsti-ch-text strong { color:rgba(245,237,224,0.82); font-weight:400; }
-
-/* Pull quote */
-.tsti-pullquote {
-  margin-top:40px; padding:28px 32px;
-  border-left:2px solid var(--gold);
-  background:rgba(200,164,106,0.04);
-  position:relative;
-}
-.tsti-pullquote::before {
-  content:'"'; position:absolute; top:-12px; left:24px;
-  font-family:var(--font-d); font-size:64px; color:rgba(200,164,106,0.22);
-  line-height:1; font-style:italic;
-}
-.tsti-q {
-  font-family:var(--font-d); font-size:clamp(17px,2vw,22px);
-  font-weight:300; font-style:italic; line-height:1.6;
-  color:var(--cream); margin-bottom:20px;
-}
-.tsti-author { display:flex; align-items:center; gap:16px; margin-top:4px; }
-.tsti-author-dot { width:24px; height:1px; background:var(--gold); flex-shrink:0; }
-.tsti-name {
-  font-family:var(--font-u); font-size:9.5px; font-weight:700;
-  letter-spacing:0.22em; text-transform:uppercase; color:var(--cream);
-}
-.tsti-role {
-  font-family:var(--font-u); font-size:8.5px; letter-spacing:0.18em;
-  text-transform:uppercase; color:var(--gold); margin-top:3px;
-}
-
-/* Results row */
-.tsti-results {
-  display:flex; gap:0; margin-top:36px;
-  border:1px solid rgba(245,237,224,0.07);
-}
-.tsti-res {
-  flex:1; padding:20px 24px; text-align:center;
-  border-right:1px solid rgba(245,237,224,0.07);
-}
-.tsti-res:last-child { border-right:none; }
-.tsti-res-n {
-  font-family:var(--font-d); font-size:32px; font-weight:300;
-  color:var(--gold); line-height:1; display:block; margin-bottom:6px;
-}
-.tsti-res-l {
-  font-family:var(--font-u); font-size:8px; letter-spacing:0.2em;
-  text-transform:uppercase; color:rgba(245,237,224,0.35);
-}
-
-@media(max-width:960px){
-  .tsti-wrap { grid-template-columns:1fr; gap:56px; }
-  .tsti-portrait { aspect-ratio:4/3; }
-  .tsti-badge { left:16px; top:16px; }
-  .tsti-results { flex-direction:column; }
-  .tsti-res { border-right:none; border-bottom:1px solid rgba(245,237,224,0.07); }
-  .tsti-res:last-child { border-bottom:none; }
-}
-
 /* ── INDUSTRIES ──────────────────────────── */
 .ind {
   padding:140px 56px;
@@ -940,17 +813,213 @@ footer::before {
 #sdock.spl .sdic[data-d="1"]{transform:translateX(150vw) scale(0.2)!important;opacity:0!important;pointer-events:none}
 #sdock.spl .sdbg{opacity:0}
 
+/* ══════════════════════════════════════════
+   ██ FULL-BODY MOTION LAYER
+══════════════════════════════════════════ */
+
+/* ── CURSOR LABEL ────────────────────────── */
+#clabel {
+  position:fixed; pointer-events:none; z-index:10000;
+  font-family:var(--font-u); font-size:8px; font-weight:700;
+  letter-spacing:0.28em; text-transform:uppercase; color:var(--gold);
+  opacity:0; transform:translate(-50%,-200%) scale(0.8);
+  transition:opacity .22s ease, transform .22s cubic-bezier(.34,1.56,.64,1);
+  white-space:nowrap;
+}
+#clabel.show { opacity:1; transform:translate(-50%,-200%) scale(1); }
+
+/* ── RIPPLE ──────────────────────────────── */
+.rpl {
+  position:absolute; border-radius:50%;
+  background:rgba(200,164,106,0.2);
+  pointer-events:none; z-index:100;
+  transform:scale(0); animation:rplAnim .65s cubic-bezier(.23,1,.32,1) forwards;
+}
+@keyframes rplAnim {
+  to { transform:scale(4); opacity:0; }
+}
+
+/* ── SCRAMBLE TARGET ─────────────────────── */
+.scr-char {
+  display:inline-block;
+  transition:color .12s;
+}
+.scr-char.scrambling { color:var(--gold); }
+
+/* ── GALLERY INNER PARALLAX ──────────────── */
+.gc { transform-style:preserve-3d; }
+.gc .gc-img-wrap {
+  position:absolute; inset:-8%; will-change:transform;
+  transition:transform .08s linear;
+}
+.gc img { position:static; width:100%; height:100%; }
+
+/* ── SPRINGY PILLS ───────────────────────── */
+.ip:hover { animation:springPop .45s cubic-bezier(.34,1.56,.64,1) forwards; }
+@keyframes springPop {
+  0%   { transform:scale(1) }
+  35%  { transform:scale(1.12) }
+  65%  { transform:scale(0.96) }
+  100% { transform:scale(1.04) }
+}
+
+/* ── PROCESS STEP BORDER-TRACE ───────────── */
+.stp {
+  border:1px solid transparent;
+  transition:opacity .7s ease, transform .7s ease,
+             border-color .4s ease, background .4s ease,
+             padding .4s ease !important;
+}
+.stp:hover {
+  border-color:rgba(200,164,106,0.14);
+  background:rgba(200,164,106,0.025);
+  padding-left:20px !important;
+}
+.stp:hover .stpt { color:var(--gold); transition:color .3s; }
+
+/* ── SERVICE HEADER SHIMMER ──────────────── */
+.svh::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg, transparent 0%, rgba(200,164,106,0.04) 50%, transparent 100%);
+  transform:translateX(-100%);
+  transition:transform 0s;
+  pointer-events:none;
+}
+.svi { position:relative; }
+.svh { position:relative; overflow:hidden; }
+.svi:hover .svh::before {
+  transform:translateX(100%);
+  transition:transform .75s ease;
+}
+
+/* ── WHY LIST ITEM HOVER ─────────────────── */
+.wyli {
+  position:relative;
+  transition:opacity .65s ease, transform .65s ease,
+             background .35s ease, padding-left .35s ease !important;
+}
+.wyli::before {
+  content:''; position:absolute; left:0; top:0; bottom:0;
+  width:2px; background:var(--gold);
+  transform:scaleY(0); transform-origin:top;
+  transition:transform .4s cubic-bezier(.23,1,.32,1);
+}
+.wyli:hover { background:rgba(200,164,106,0.035); padding-left:18px !important; }
+.wyli:hover::before { transform:scaleY(1); }
+.wyli:hover .wyit { color:var(--gold); transition:color .3s; }
+
+/* ── STAT HOVER WOBBLE ───────────────────── */
+.asts > div { cursor:none; }
+.asts > div:hover .stn { animation:statWobble .5s cubic-bezier(.34,1.56,.64,1); }
+@keyframes statWobble {
+  0%   { transform:scale(1) rotate(0deg) }
+  25%  { transform:scale(1.1) rotate(-2deg) }
+  50%  { transform:scale(1.06) rotate(2deg) }
+  75%  { transform:scale(1.04) rotate(-1deg) }
+  100% { transform:scale(1) rotate(0deg) }
+}
+
+/* ── GALLERY CARD: SHEAR ON HOVER ────────── */
+.gc:hover { z-index:2; }
+
+/* ── FOOTER LINK LIFT ────────────────────── */
+.fc ul li a {
+  overflow:hidden; display:inline-flex; flex-direction:column;
+}
+.fc ul li a .al-t,
+.fc ul li a .al-b {
+  display:block;
+  transition:transform .38s cubic-bezier(.23,1,.32,1);
+}
+.fc ul li a .al-b {
+  position:absolute; top:100%; left:0; color:var(--gold);
+}
+.fc ul li a:hover .al-t { transform:translateY(-100%); }
+.fc ul li a:hover .al-b { transform:translateY(-100%); }
+
+/* ── ABOUT IMG MOUSE PARALLAX ────────────── */
+.aiw { overflow:visible; }
+.aiw img { transition:transform .12s ease, filter .6s ease; will-change:transform; }
+
+/* ── HERO IMAGE HOVER DISTORTION ─────────── */
+.hr:hover img {
+  filter:grayscale(0%) contrast(1.08) saturate(0.9) !important;
+}
+
+/* ── NAV LOGO GLITCH ─────────────────────── */
+.nl { position:relative; display:inline-block; }
+.nl::before, .nl::after {
+  content:attr(data-text); position:absolute; top:0; left:0;
+  opacity:0; pointer-events:none;
+  font-family:var(--font-u); font-weight:800;
+}
+.nl::before { color:var(--gold); clip-path:polygon(0 0,100% 0,100% 40%,0 40%); }
+.nl::after  { color:rgba(245,237,224,0.5); clip-path:polygon(0 60%,100% 60%,100% 100%,0 100%); }
+.nl:hover::before {
+  opacity:1; animation:glitchT .35s steps(4) infinite;
+}
+.nl:hover::after {
+  opacity:1; animation:glitchB .35s steps(4) infinite .05s;
+}
+@keyframes glitchT {
+  0%,100%{transform:translate(0,0)} 33%{transform:translate(-3px,0)} 66%{transform:translate(2px,0)}
+}
+@keyframes glitchB {
+  0%,100%{transform:translate(0,0)} 33%{transform:translate(3px,0)}  66%{transform:translate(-2px,0)}
+}
+
+/* ── SECTION HEADING MAGNETIC TILT ──────── */
+.galt, .ah, .wytt, .csct, .indtt { transition:transform .2s ease; display:inline-block; }
+
+/* ── MARQUEE ITEM HOVER LIFT ─────────────── */
+.mqi { transition:color .35s, transform .3s cubic-bezier(.34,1.56,.64,1), letter-spacing .3s; }
+.mqi:hover { transform:translateY(-3px) scale(1.04); letter-spacing:0.1em; }
+
+/* ── GALLERY CARD COUNT BOUNCE ───────────── */
+.gc:hover .gcn { animation:countBounce .4s cubic-bezier(.34,1.56,.64,1); }
+@keyframes countBounce {
+  0%{transform:scale(1)} 50%{transform:scale(1.5)} 100%{transform:scale(1)}
+}
+
+/* ── SCROLL SECTION SKEW ─────────────────── */
+.rv { --skew:0deg; }
+
+/* ── CONTACT FORM INPUT FOCUS GLOW ───────── */
+.fi:focus { box-shadow:0 4px 20px rgba(200,164,106,0.08); }
+
+/* ── CTA IMAGE DISTORT ON HOVER ──────────── */
+.csci img { transition:filter .6s, transform .8s cubic-bezier(.23,1,.32,1) !important; }
+.csci:hover img { transform:scale(1.04) skewX(-0.5deg) !important; filter:grayscale(0%) !important; }
+
+/* ── TSTI PORTRAIT TILT ──────────────────── */
+.tsti-left { transition:transform .18s ease; will-change:transform; }
+
+/* ── CURSOR TRAIL ────────────────────────── */
+.ctrail {
+  position:fixed; width:5px; height:5px; border-radius:50%;
+  background:var(--gold); pointer-events:none; z-index:9990;
+  transform:translate(-50%,-50%); opacity:0;
+  animation:trailFade .6s ease forwards;
+}
+@keyframes trailFade {
+  0%   { opacity:0.5; transform:translate(-50%,-50%) scale(1); }
+  100% { opacity:0; transform:translate(-50%,-50%) scale(0); }
+}
+
 /* ── RESPONSIVE ──────────────────────────── */
 @media(max-width:960px){
-  nav{padding:20px 24px}
-  nav.scrolled{padding:14px 24px}
-  .nls{gap:20px}
+  nav{padding:16px 20px; flex-wrap:wrap; gap:8px; align-items:center}
+  nav.scrolled{padding:12px 20px}
+  .nls{gap:10px; flex-wrap:wrap; justify-content:flex-end; flex:1; min-width:0}
+  .nls a:not(.ncta){font-size:9px; letter-spacing:0.14em}
+  .ncta{padding:8px 14px !important; white-space:nowrap; font-size:9px !important; letter-spacing:0.14em !important}
+  .nl{font-size:18px; flex-shrink:0}
   .hero{grid-template-columns:1fr}
   .hr{height:65vh;position:relative}
   .hri{position:relative;height:100%}
   .hr img{height:100%}
-  .hl{padding:110px 24px 48px}
-  .gal,.abt,.svs,.prc,.ind,.tsti{padding:80px 24px}
+  .hl{padding:140px 24px 48px}
+  .gal,.abt,.svs,.prc,.ind{padding:80px 24px}
   .galg{grid-template-columns:1fr 1fr}
   .gc:nth-child(2),.gc:nth-child(4){margin-top:0}
   .galh{flex-direction:column;align-items:flex-start;gap:28px}
@@ -991,10 +1060,11 @@ footer::before {
 <!-- CURSOR -->
 <div id="cdot"></div>
 <div id="cring"></div>
+<div id="clabel"></div>
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nl" id="nlogo">LOCA</a>
+  <a href="#" class="nl" id="nlogo" data-text="LOCA">LOCA</a>
   <div class="nls">
     <a href="#services" id="nl1">Services</a>
     <a href="#process" id="nl2">Process</a>
@@ -1181,73 +1251,6 @@ footer::before {
       <li class="wyli rv d2"><span class="wyic">◇</span><div><div class="wyit">Data-Backed Decisions</div><div class="wyid">From creator selection to content timing, every decision is grounded in analytics — not intuition.</div></div></li>
       <li class="wyli rv d3"><span class="wyic">○</span><div><div class="wyit">End-to-End Management</div><div class="wyid">Briefing, negotiation, content review, reporting — we own the entire campaign lifecycle.</div></div></li>
     </ul>
-  </div>
-</div>
-
-<!-- TESTIMONIAL — Riya's Story -->
-<div class="tsti">
-  <div class="tsti-wrap rv">
-    <!-- Portrait -->
-    <div class="tsti-left">
-      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&q=80&fit=crop&crop=faces" alt="Riya Malhotra" class="tsti-portrait">
-      <div class="tsti-portrait-frame"></div>
-      <div class="tsti-badge">
-        <div class="tsti-badge-line1">Verified Client</div>
-        <div class="tsti-badge-line2">Bloom Organics</div>
-      </div>
-    </div>
-    <!-- Story -->
-    <div class="tsti-right">
-      <p class="tsti-lbl">A Real Story</p>
-      <h2 class="tsti-headline">How <em>Riya's</em> launch went from<br>invisible to unforgettable.</h2>
-      <div class="tsti-story">
-        <div class="tsti-chapter">
-          <span class="tsti-ch-num">I.</span>
-          <div class="tsti-ch-body">
-            <div class="tsti-ch-title">The Problem</div>
-            <p class="tsti-ch-text">Riya Malhotra co-founded <strong>Bloom Organics</strong> out of her Lucknow apartment in early 2024 — a small-batch skincare line built on cold-pressed ingredients and zero greenwashing. The product was exceptional. The reach wasn't. <strong>Three months post-launch, her best reel had 800 views.</strong> She'd tried two influencer platforms before, both left her with fake-follower reports and a bruised budget.</p>
-          </div>
-        </div>
-        <div class="tsti-chapter">
-          <span class="tsti-ch-num">II.</span>
-          <div class="tsti-ch-body">
-            <div class="tsti-ch-title">Finding LOCA</div>
-            <p class="tsti-ch-text">A mutual contact in Gorakhpur mentioned LOCA. Riya reached out expecting a pitch deck. Instead, she got a <strong>45-minute discovery call</strong> where the team asked about her customer's Saturday morning routine — not her follower target. "They were trying to understand my buyer, not sell me a package," she recalls. Within a week, they had shortlisted <strong>seven micro-creators</strong> in the wellness-meets-minimalism space — all with audiences under 80K, all with engagement above 6%.</p>
-          </div>
-        </div>
-        <div class="tsti-chapter">
-          <span class="tsti-ch-num">III.</span>
-          <div class="tsti-ch-body">
-            <div class="tsti-ch-title">The Campaign</div>
-            <p class="tsti-ch-text">LOCA built a <strong>"Morning Ritual" content arc</strong> — creators showed their real skincare routines with Bloom products woven in naturally. No forced unboxings, no discount codes shouted at the camera. The briefs were specific enough to protect the brand voice, loose enough to let creators be themselves. Content went live across three weeks in October 2024.</p>
-          </div>
-        </div>
-      </div>
-      <div class="tsti-pullquote rv d1">
-        <p class="tsti-q">I was terrified it would look like every other sponsored post. It didn't. People were DMing the creators asking if it was paid. That's when I knew LOCA had done something real.</p>
-        <div class="tsti-author">
-          <div class="tsti-author-dot"></div>
-          <div>
-            <div class="tsti-name">Riya Malhotra</div>
-            <div class="tsti-role">Co-Founder · Bloom Organics, Lucknow</div>
-          </div>
-        </div>
-      </div>
-      <div class="tsti-results rv d2">
-        <div class="tsti-res">
-          <span class="tsti-res-n">3.8×</span>
-          <span class="tsti-res-l">Reach vs. Target</span>
-        </div>
-        <div class="tsti-res">
-          <span class="tsti-res-n">340+</span>
-          <span class="tsti-res-l">New Orders (Week 1)</span>
-        </div>
-        <div class="tsti-res">
-          <span class="tsti-res-n">7.2%</span>
-          <span class="tsti-res-l">Avg. Engagement Rate</span>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -1592,6 +1595,127 @@ document.querySelector('.fback')?.addEventListener('click',e=>{
   e.preventDefault();
   window.scrollTo({top:0,behavior:'smooth'});
 });
+
+// ═══════════════════════════════════════════════════════════════
+// ██ FULL-BODY MOTION LAYER
+// ═══════════════════════════════════════════════════════════════
+
+// SPRING CURSOR
+const dot2=document.getElementById('cdot'),ring2=document.getElementById('cring'),clabel=document.getElementById('clabel');
+let mx2=0,my2=0,rx2=0,ry2=0;
+document.addEventListener('mousemove',e=>{mx2=e.clientX;my2=e.clientY;dot2.style.left=mx2+'px';dot2.style.top=my2+'px';clabel.style.left=mx2+'px';clabel.style.top=my2+'px';});
+(function sp(){rx2+=(mx2-rx2)*.085;ry2+=(my2-ry2)*.085;ring2.style.left=rx2+'px';ring2.style.top=ry2+'px';requestAnimationFrame(sp);})();
+
+// CURSOR LABEL
+const lmap=[['.gc','VIEW'],['.svh','OPEN'],['.ip','EXPLORE'],['.btp','SEND ↗'],['.ncta','LET\'S GO'],['.fback','TO TOP'],['.csci','REVEAL'],['.aiw','ABOUT'],['.mqi','DRAG ME'],['.wyli','DETAIL'],['.stp','DETAIL']];
+lmap.forEach(([s,t])=>document.querySelectorAll(s).forEach(el=>{el.addEventListener('mouseenter',()=>{clabel.textContent=t;clabel.classList.add('show');});el.addEventListener('mouseleave',()=>clabel.classList.remove('show'));}));
+
+// GOLD CURSOR TRAIL
+let lt=0;document.addEventListener('mousemove',e=>{if(Date.now()-lt<85)return;lt=Date.now();const t=document.createElement('div');t.className='ctrail';t.style.left=e.clientX+'px';t.style.top=e.clientY+'px';document.body.appendChild(t);setTimeout(()=>t.remove(),700);});
+
+// GLOBAL CLICK RIPPLE
+document.addEventListener('click',e=>{
+  const sels=['.gc','.svi','.stp','.wyli','.ip','.asts > div','.tsti-chapter','section'];
+  let el=null;for(const s of sels){el=e.target.closest(s);if(el)break;}
+  if(!el)el=e.target;if(!el||el===document.body)return;
+  const rb=el.getBoundingClientRect(),rpl=document.createElement('div');
+  rpl.className='rpl';const sz=Math.max(rb.width,rb.height)*2.5;
+  rpl.style.cssText=`width:${sz}px;height:${sz}px;left:${e.clientX-rb.left-sz/2}px;top:${e.clientY-rb.top-sz/2}px`;
+  if(getComputedStyle(el).position==='static')el.style.position='relative';
+  el.appendChild(rpl);setTimeout(()=>rpl.remove(),700);
+});
+
+// TEXT SCRAMBLE
+const ALP='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@#&0123456789';
+function scr(el){
+  if(el._sc)return;el._sc=true;
+  const o=el._orig||(el._orig=el.innerText);
+  let f=0;const tot=16,chars=[...o];
+  const iv=setInterval(()=>{
+    el.innerHTML=chars.map((c,i)=>{
+      if(c===' '||c==='\n')return c;
+      if(f/tot>i/chars.length)return`<span class="scr-char">${c}</span>`;
+      return`<span class="scr-char scrambling">${ALP[Math.floor(Math.random()*ALP.length)]}</span>`;
+    }).join('');
+    if(++f>tot){clearInterval(iv);el.innerHTML=o;el._sc=false;}
+  },36);
+}
+document.querySelectorAll('.nls a:not(.ncta)').forEach(el=>el.addEventListener('mouseenter',()=>scr(el)));
+document.querySelectorAll('.svtt,.stpt,.wyit,.gcin,.stl').forEach(el=>el.addEventListener('mouseenter',()=>scr(el)));
+
+// IMAGE INNER PARALLAX (all images in interactive containers)
+function addImgPar(container,img,scaleAmt,moveAmt){
+  if(!container||!img)return;
+  container.addEventListener('mouseenter',()=>{img.style.transition='transform .08s linear';});
+  container.addEventListener('mousemove',e=>{
+    const r=container.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    img.style.transform=`scale(${scaleAmt}) translate(${x*-moveAmt}px,${y*-moveAmt}px)`;
+  });
+  container.addEventListener('mouseleave',()=>{
+    img.style.transition='transform .9s cubic-bezier(.23,1,.32,1)';
+    img.style.transform='scale(1) translate(0,0)';
+  });
+}
+document.querySelectorAll('.gc').forEach(c=>addImgPar(c,c.querySelector('img'),1.15,18));
+addImgPar(document.querySelector('.aiw'),document.querySelector('.aiw img'),1.06,20);
+addImgPar(document.querySelector('.hr'),document.getElementById('himg'),1.08,22);
+addImgPar(document.querySelector('.csci'),document.querySelector('.csci img'),1.07,16);
+addImgPar(document.querySelector('.wyi'),document.querySelector('.wyi img'),1.06,14);
+
+// HEADING MAGNETIC TILT
+document.querySelectorAll('.galt,.ah,.wytt,.csct,.indtt').forEach(h=>{
+  h.addEventListener('mousemove',e=>{
+    const r=h.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    h.style.transform=`skewX(${x*3}deg) skewY(${y*1.5}deg) translateX(${x*8}px)`;
+    h.style.transition='transform .1s ease';
+  });
+  h.addEventListener('mouseleave',()=>{h.style.transform='skewX(0) skewY(0) translateX(0)';h.style.transition='transform .7s cubic-bezier(.23,1,.32,1)';});
+});
+
+// FOOTER LINK LIFT
+document.querySelectorAll('.fc ul li a').forEach(a=>{
+  if(a.querySelector('.al-t'))return;
+  const txt=a.textContent.trim();
+  a.innerHTML=`<span class="al-t" style="display:block;transition:transform .35s cubic-bezier(.23,1,.32,1)">${txt}</span><span class="al-b" style="position:absolute;top:100%;left:0;color:var(--gold);transition:transform .35s cubic-bezier(.23,1,.32,1)">${txt}</span>`;
+  a.style.cssText+=';position:relative;overflow:hidden;display:inline-block;';
+  a.addEventListener('mouseenter',()=>{a.querySelector('.al-t').style.transform='translateY(-100%)';a.querySelector('.al-b').style.transform='translateY(-100%)';});
+  a.addEventListener('mouseleave',()=>{a.querySelector('.al-t').style.transform='translateY(0)';a.querySelector('.al-b').style.transform='translateY(0)';});
+});
+
+// STAT WOBBLE
+document.querySelectorAll('.asts > div').forEach(b=>{
+  b.addEventListener('mouseenter',()=>{const n=b.querySelector('.stn');if(!n)return;n.style.animation='none';void n.offsetWidth;n.style.animation='statWobble .5s cubic-bezier(.34,1.56,.64,1)';});
+});
+
+// PILL SPRING
+document.querySelectorAll('.ip').forEach(p=>{
+  p.addEventListener('mouseenter',()=>{p.style.animation='none';void p.offsetWidth;p.style.animation='springPop .45s cubic-bezier(.34,1.56,.64,1) forwards';});
+});
+
+// WHY LIST HOVER
+document.querySelectorAll('.wyli').forEach(li=>{
+  li.style.overflow='hidden';
+  li.addEventListener('mouseenter',()=>{li.style.paddingLeft='18px';li.style.background='rgba(200,164,106,0.04)';li.querySelector('.wyit')&&(li.querySelector('.wyit').style.color='var(--gold)');});
+  li.addEventListener('mouseleave',()=>{li.style.paddingLeft='0';li.style.background='';li.querySelector('.wyit')&&(li.querySelector('.wyit').style.color='');});
+});
+
+// SERVICE ITEM GLOW BORDER
+document.querySelectorAll('.svi').forEach(s=>{
+  s.addEventListener('mouseenter',()=>s.style.borderBottomColor='rgba(200,164,106,0.25)');
+  s.addEventListener('mouseleave',()=>{if(!s.classList.contains('open'))s.style.borderBottomColor='rgba(245,237,224,0.07)';});
+});
+
+// MARQUEE DRAG-TO-SCRUB
+const mqEl=document.querySelector('.mqt');
+if(mqEl){
+  let dragging=false,dX=0,dOff=0,dCur=0;
+  mqEl.addEventListener('mousedown',e=>{dragging=true;dX=e.clientX;dOff=dCur;mqEl.style.animationPlayState='paused';});
+  document.addEventListener('mousemove',e=>{if(!dragging)return;dCur=dOff+(e.clientX-dX)*.6;mqEl.style.transform=`translateX(${dCur}px)`;});
+  document.addEventListener('mouseup',()=>{if(!dragging)return;dragging=false;mqEl.style.animationPlayState='running';mqEl.style.transform='';dCur=0;});
+}
+
+// NAV LOGO GLITCH
+const nl2=document.getElementById('nlogo');if(nl2)nl2.setAttribute('data-text','LOCA');
 </script>
 </body>
 </html>
