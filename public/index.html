@@ -1005,6 +1005,34 @@ footer::before {
   100% { opacity:0; transform:translate(-50%,-50%) scale(0); }
 }
 
+/* ── INDIA GOLD TAG ──────────────────────── */
+.india-tag {
+  font-family:var(--font-u);
+  font-weight:700;
+  font-size:inherit;
+  letter-spacing:0.32em;
+  background:linear-gradient(110deg,#c8a46a 0%,#e2c07e 35%,#f5d99a 52%,#e2c07e 68%,#c8a46a 100%);
+  background-size:240% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:indiaSpin 3.4s ease-in-out infinite;
+  display:inline-block;
+  position:relative;
+}
+.india-tag::after {
+  content:'';
+  position:absolute;
+  bottom:-3px; left:0; right:0;
+  height:1px;
+  background:linear-gradient(to right, transparent, rgba(200,164,106,0.7) 30%, rgba(242,210,140,0.9) 50%, rgba(200,164,106,0.7) 70%, transparent);
+  animation:indiaSpin 3.4s ease-in-out infinite;
+}
+@keyframes indiaSpin {
+  0%,100%{background-position:0% center}
+  50%{background-position:100% center}
+}
+
 /* ── RESPONSIVE ──────────────────────────── */
 @media(max-width:960px){
   nav{padding:16px 20px; flex-wrap:wrap; gap:8px; align-items:center}
@@ -1079,7 +1107,7 @@ footer::before {
   <div class="amb amb-2"></div>
   <div class="amb amb-3"></div>
   <div class="hl">
-    <p class="hey"><span>Gorakhpur · India · Influencer Marketing Agency</span></p>
+    <p class="hey"><span>India · Influencer Marketing Agency</span></p>
     <h1 class="ht">
       <span class="ln"><span class="li">The Right</span></span>
       <span class="ln"><span class="li">Voice.</span></span>
@@ -1174,7 +1202,7 @@ footer::before {
     <p class="albl rv">About LOCA Agency</p>
     <h2 class="ah rv d1">Influence is an <em>art.</em><br>We treat it as one.</h2>
     <p class="at rv d2">LOCA Agency was born from a simple conviction — that the right voice, speaking to the right audience, at the right moment, can transform a brand entirely. We are not a directory. We are strategists.</p>
-    <p class="at rv d3">Based in Gorakhpur, we bring the sharpness of a boutique studio with a growing creator network spanning key niches across India. Every recommendation we make is intentional. Every partnership we build is purposeful.</p>
+    <p class="at rv d3">Rooted in <span class="india-tag">INDIA</span> — we carry the sharpness of a boutique studio with a growing creator network spanning key niches across the nation. Every recommendation we make is intentional. Every partnership we build is purposeful.</p>
     <div class="asts rv d4">
       <div><div class="stn counter" data-target="100" data-suf="+">0</div><div class="stl">Creator Network</div></div>
       <div><div class="stn counter" data-target="8" data-suf="+">0</div><div class="stl">Niches Covered</div></div>
@@ -1312,7 +1340,7 @@ footer::before {
         <a href="tel:+919119627388" class="bto">Schedule a Call</a>
       </div>
     </form>
-    <p class="cfn rv d3">hello@locaagency.com &nbsp;·&nbsp; Gorakhpur, Uttar Pradesh</p>
+    <p class="cfn rv d3">hello@locaagency.com &nbsp;·&nbsp; <span class="india-tag">INDIA</span></p>
   </div>
 </div>
 
@@ -1322,7 +1350,7 @@ footer::before {
   <div class="ftop">
     <div>
       <div class="flogo">LOCA</div>
-      <p class="ftag">Influencer Marketing Agency<br>Gorakhpur, Uttar Pradesh, India<br><br>We Grow Together.</p>
+      <p class="ftag">Influencer Marketing Agency<br><span class="india-tag">INDIA</span><br><br>We Grow Together.</p>
     </div>
     <div class="fc"><h4>Navigate</h4><ul>
       <li><a href="#about">About Us</a></li><li><a href="#services">Services</a></li>
@@ -1336,7 +1364,7 @@ footer::before {
     <div class="fc"><h4>Contact</h4><ul>
       <li><a href="mailto:hello@locaagency.com">hello@locaagency.com</a></li>
       <li><a href="tel:+919119627388">+91 91196 27388</a></li>
-      <li>Gorakhpur, UP, India</li>
+      <li><span class="india-tag">INDIA</span></li>
     </ul></div>
   </div>
   <div class="fbot">
@@ -1566,19 +1594,27 @@ if(form){
   form.addEventListener('submit',async e=>{
     e.preventDefault(); emsg.style.display='none';
     sbtn.disabled=true; slbl.textContent='Sending…';
-    const data=Object.fromEntries(new FormData(form).entries());
+    const raw=Object.fromEntries(new FormData(form).entries());
+    const data={
+      ...raw,
+      _subject:'New Campaign Inquiry — LOCA Agency',
+      _captcha:'false',
+      _template:'table'
+    };
     try{
-      const res=await fetch(`${window.location.origin}/api/contact`,{
-        method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
+      const res=await fetch('https://formsubmit.co/ajax/locaagency@gmail.com',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(data)
       });
       const json=await res.json();
-      if(res.ok&&json.success){ form.style.display='none'; smsg.style.display='block'; }
+      if(res.ok&&(json.success===true||json.success==='true')){ form.style.display='none'; smsg.style.display='block'; }
       else{
-        emsg.innerHTML=json.errors?json.errors.join('<br>'):(json.message||'Something went wrong.');
+        emsg.innerHTML=json.message||'Something went wrong. Please try again.';
         emsg.style.display='block'; sbtn.disabled=false; slbl.textContent='Start a Campaign ↗';
       }
     }catch{
-      emsg.innerHTML='Network error. Please check your connection.';
+      emsg.innerHTML='Network error. Please check your connection and try again.';
       emsg.style.display='block'; sbtn.disabled=false; slbl.textContent='Start a Campaign ↗';
     }
   });
