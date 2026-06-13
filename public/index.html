@@ -1595,23 +1595,18 @@ if(form){
   form.addEventListener('submit',async e=>{
     e.preventDefault(); emsg.style.display='none';
     sbtn.disabled=true; slbl.textContent='Sending…';
-    const raw=Object.fromEntries(new FormData(form).entries());
-    const data={
-      ...raw,
-      _subject:'New Campaign Inquiry — LOCA Agency',
-      _captcha:'false',
-      _template:'table'
-    };
+    const data=Object.fromEntries(new FormData(form).entries());
     try{
-      const res=await fetch('https://formsubmit.co/ajax/hello@locaagency.com',{
+      const res=await fetch('/api/contact',{
         method:'POST',
         headers:{'Content-Type':'application/json','Accept':'application/json'},
         body:JSON.stringify(data)
       });
       const json=await res.json();
-      if(res.ok&&(json.success===true||json.success==='true')){ form.style.display='none'; smsg.style.display='block'; }
+      if(res.ok&&json.success===true){ form.style.display='none'; smsg.style.display='block'; }
       else{
-        emsg.innerHTML=json.message||'Something went wrong. Please try again.';
+        const errText=Array.isArray(json.errors)?json.errors.join('<br>'):json.message||'Something went wrong. Please try again.';
+        emsg.innerHTML=errText;
         emsg.style.display='block'; sbtn.disabled=false; slbl.textContent='Start a Campaign ↗';
       }
     }catch{
