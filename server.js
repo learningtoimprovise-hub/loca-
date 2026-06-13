@@ -7,9 +7,19 @@ const nodemailer = require('nodemailer');
 const fs         = require('fs');
 const path       = require('path');
 const crypto     = require('crypto');
+const dns        = require('dns');
+
+// Render's network does not support outbound IPv6 — force IPv4 DNS
+// resolution so SMTP connections (e.g. Hostinger) don't fail with
+// ENETUNREACH on the IPv6 address.
+dns.setDefaultResultOrder('ipv4first');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
+
+// Trust Render's reverse proxy so express-rate-limit can correctly
+// read the client IP from X-Forwarded-For.
+app.set('trust proxy', 1);
 
 // ─── DB (JSON file) ──────────────────────────────────────────────────────────
 const DB_PATH = path.join(__dirname, 'data', 'leads.json');
@@ -47,6 +57,7 @@ function createTransporter() {
     host   : process.env.SMTP_HOST   || 'smtp.gmail.com',
     port   : parseInt(process.env.SMTP_PORT || '587'),
     secure : process.env.SMTP_SECURE === 'true',
+    family : 4, // force IPv4 — avoids ENETUNREACH on hosts without IPv6 egress (e.g. Render)
     auth   : {
       user : process.env.SMTP_USER,
       pass : process.env.SMTP_PASS
