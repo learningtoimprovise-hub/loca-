@@ -1,0 +1,5 @@
+node_modules/
+.env
+data/leads.json
+*.log
+.DS_Store
